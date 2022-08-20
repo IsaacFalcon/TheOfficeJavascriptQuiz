@@ -1,0 +1,22 @@
+* {
+   box-sizing: border-box;
+   font-family: 'Inter', sans-serif;
+}
+
+:root {
+    --dark: rgb(4, 6, 39);
+    --right: rgb(20, 172, 20);
+    --wrong: red;
+    --button: rgb(73, 73, 221);
+}
+
+body {
+    background-color: var(--dark);
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
