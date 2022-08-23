@@ -1,13 +1,15 @@
 * {
    box-sizing: border-box;
    font-family: 'Inter', sans-serif;
+   font-weight: bold;
 }
 
 :root {
-    --dark: rgb(4, 6, 39);
+    --dark: rgb(5, 7, 34);
     --right: rgb(20, 172, 20);
     --wrong: red;
-    --button: rgb(73, 73, 221);
+    --button: rgb(0, 89, 255);
+    --accent: rgb(6, 34, 192);
 }
 
 body {
@@ -19,4 +21,89 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.top {
+    margin-top: 2%;
+    background-color: white;
+    display: flex;
+    width: 990px;
+    height: 50px;
+}
+
+.scores {
+    margin-left: 3%;
+    margin-right: 80%;
+}
+
+
+.container {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    border: 2px solid var(--accent);
+    width: 1000px;
+    height: 850px;
+    max-width: 80%;
+    box-shadow: 0 0 10px 2px var(--accent);
+}
+
+.container h1 {
+    margin-top: 100px;
+    text-align: center;
+    font-size: 50px;
+}
+
+.container h2 {
+    text-align: center;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+
+.answer-container {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 45%;
+    margin: 5% 12%;    
+}
+
+
+.btn {
+    color: white;
+    width: 80%;
+    height: 12%;
+    font-size: 15px;
+    margin-bottom: 12px;
+    border: 2px solid var(--accent);
+    background-color: var(--button);
+    padding: 12px 5px;
+    border-radius: 5px;   
+}
+
+.controls {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-btn {
+    color: white;
+    width: 20%;
+    height: 8%;
+    margin-bottom: 500px;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 20px 35px;
+}
+
+.btn:hover {
+    border: 2px solid var(--dark);
+    box-shadow: 0 0 10px 2px var(--dark);
+}
+
+.hide {
+    display: none;
 }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,24 +9,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&amp;display=swap" rel="stylesheet">
     <link href="./assets/css/style.css" rel="stylesheet">
     <title>The Office Quiz</title>
-</head>
+  </head>
 
-<body>
-  <div class="container">
-    <div id="question-container" class="hide"></div>
-      <div id="question">Question</div>
-      
-      <div id="answer-buttons" class="answer-container"></div>
-        <button class="btn">Answer 1</button>
-        <button class="btn">Answer 2</button>
-        <button class="btn">Answer 3</button>
-        <button class="btn">Answer 4</button>
-      
-        <div class="controls">
-        <button id="start-btn" class=" start-btn btn">Start</button> 
-        <button id="next-btn" class=" next-btn btn hide">Next</button> 
+  <body>
+    <div class="container">
+      <div id="topbar" class="top">
+        <button class="scores">High Scores</button>
+          <p id="time" class="timer">READY</p>
       </div>
-  </div> 
+
+      <h1 id="header1">The Office Quiz</h1>
+        <h2 id="header2">See how much you know about <em>the Office</em> and try to answer as many questions in the time thats given! Maybe you'll win a <em>dundee!</em>
+        </h2>
+    <div id="question-container1" class="hide">
+      <h2 id="question">Question</h2>
+        <a id="answer-buttons" class="answer-container">
+          <button class="btn">Answer 1</button>
+          <button class="btn">Answer 2</button>
+          <button class="btn">Answer 3</button>
+          <button class="btn">Answer 4</button>
+        </a>
+    </div>
+
+      <div class="controls">
+        <button id="start-btn" class=" start-btn btn">Start</button> 
+      </div>
+    </div>
       <script src="./assets/js/script.js"></script> 
-</body>
+  </body>
 </html>
