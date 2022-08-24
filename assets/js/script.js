@@ -5,9 +5,14 @@ const timeElement = document.getElementById('time');
 const questionContainerElement = document.getElementById('question-container1');
 var questionElement = document.getElementById('question');
 var answerButtonsElement = document.getElementById('answer-buttons');
+var endScores = document.getElementById('scorescreen');
+var score = document.getElementById('finalscore');
+var  nameValue = document.getElementById('nameinput');
+var subInitials = document.getElementById('submitinitials');
+
 var timer = 50;
 var timeCount;
-
+var questionNumber = 0;
 
 function setupTimer() {
   timeCount = setInterval(function () {
@@ -32,6 +37,7 @@ function startGame() {
    subHeader.classList.add('hide');
    questionContainerElement.classList.remove('hide');
    setupTimer();
+   displayQuestion();
 
 }
 
@@ -57,9 +63,63 @@ var questions = [
     answer: "Jello",
    },
    {
-    question: "Who does Michael hit with his car",
+    question: "Who does Michael hit with his ?",
     choices: ["Kevin", "Meredith", "The security guard", "Oscar"],
-    answer: "",
+    answer: "Meredith",
    },
  ]
 
+function displayQuestion() {
+  var currentQuestion = questions[questionNumber];
+  document.querySelector("h3").innerHTML = currentQuestion.question;
+  answerButtonsElement.innerHTML = "";
+  currentQuestion.choices.forEach(function(choice) {
+    var choiceButton = document.createElement("button");
+    choiceButton.setAttribute("class", "btn");
+    choiceButton.setAttribute("value", choice);
+    choiceButton.textContent = choice;
+    choiceButton.onclick = evaluateAnswer;
+    answerButtonsElement.append(choiceButton);
+  })
+
+
+
+}
+
+function evaluateAnswer() {
+   if(this.value === questions[questionNumber].answer) {
+    console.log("correct!");
+
+   } else {
+    console.log("incorrect!");
+    timer = timer -10;
+    timeElement.textContent = timer;
+   }
+   questionNumber++;
+   if(questionNumber === questions.length) {
+    endGame();
+   }
+   else {
+     displayQuestion();
+   }
+}
+
+function endGame() {
+  questionContainerElement.setAttribute("class", "hide");
+  endScores.removeAttribute("class");
+  clearInterval(timeCount);
+  score.textContent = timer;
+}
+
+// create save function which takes final score and input value and set into local storage with submit button. Take function we create and add an event listener to submit button.
+function saveScore() {
+  var newScore = {
+    newName: nameValue.value,
+    userScore: timer,
+  }
+  console.log(newScore);
+}
+
+
+
+subInitials.onclick = saveScore
