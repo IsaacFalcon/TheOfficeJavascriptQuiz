@@ -22,7 +22,7 @@
 
 ## Usage
 
-Link: 
+Link: https://isaacfalcon.github.io/TheOfficeJavascriptQuiz/
 
 ![alt Website Screenshot](assets/images/websitepreview.JPG)
 ![alt Website Screenshot](assets/images/websitepreview2.JPG)
