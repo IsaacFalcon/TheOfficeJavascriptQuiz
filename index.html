@@ -10,31 +10,46 @@
     <link href="./assets/css/style.css" rel="stylesheet">
     <title>The Office Quiz</title>
   </head>
+   
 
+  <!-- main container, high scores button, and timer-->
   <body>
     <div class="container">
       <div id="topbar" class="top">
-        <button class="scores">High Scores</button>
+        <button id="highscores" class="scores">High Scores</button>
           <p id="time" class="timer">READY</p>
       </div>
 
+      <!-- header title and paragraph for the main start page -->
       <h1 id="header1">The Office Quiz</h1>
-        <h2 id="header2">See how much you know about <em>the Office</em> and try to answer as many questions in the time thats given! Maybe you'll win a <em>dundee!</em>
+        <h2 id="header2">See how much you know about <em>the Office</em> and try to answer as many questions in the 50 seconds thats given! Careful, wrong answers deduct time, but Maybe you'll win a <em>dundee!</em>
         </h2>
+
+
     <div id="question-container1" class="hide">
       <h3 id="question">Question</h3>
         <a id="answer-buttons" class="answer-container"></a>
-    </div>
 
-      <div class="controls">
-        <div id="scorescreen" class="hide"><h1>END SCREEN</h1>
-          <h3>Congratulations Your Score Is:<span id="finalscore"></span></h3>
-          <input id="nameinput" placeholder="initials">
-            <button id="submitinitials">Submit</button>
-        </div>
-        <button id="start-btn" class=" start-btn btn">Start</button> 
+
+       <div class="prompts">
+        <h3 id="right" class=" rightanswer hide">Correct!</h3>
+        <h3 id="wrong" class="wronganswer hide">Wrong!</h3>
       </div>
     </div>
-      <script src="./assets/js/script.js"></script> 
+
+
+      <div class="controls">
+        <div id="scorescreen" class="hide"><h1>You had no Idea how High you Could Fly.</h1>
+          <h3>Congratulations Your Score Is: <span id="finalscore"></span></h3>
+          <input id="nameinput" placeholder="initials">
+            <button id="submitinitials" class="btn">Submit</button>
+            <button id="restart-btn" class="btn">Restart</button>
+        </div>
+          <button id="start-btn" class=" start-btn btn">Start</button> 
+      </div>
+    </div>
+      
+    
+    <script src="./assets/js/script.js"></script> 
   </body>
 </html>

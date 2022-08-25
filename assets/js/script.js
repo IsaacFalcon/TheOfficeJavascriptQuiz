@@ -7,8 +7,13 @@ var questionElement = document.getElementById('question');
 var answerButtonsElement = document.getElementById('answer-buttons');
 var endScores = document.getElementById('scorescreen');
 var score = document.getElementById('finalscore');
+var localScore = document.getElementById('highscores');
 var  nameValue = document.getElementById('nameinput');
 var subInitials = document.getElementById('submitinitials');
+var restart = document.getElementById('restart-btn');
+var rightAnswer = document.getElementById('right');
+var wrongAnswer = document.getElementById('wrong');
+
 
 var timer = 50;
 var timeCount;
@@ -89,11 +94,15 @@ function displayQuestion() {
 function evaluateAnswer() {
    if(this.value === questions[questionNumber].answer) {
     console.log("correct!");
+    rightAnswer.classList.remove('hide');
+    wrongAnswer.classList.add('hide');
 
    } else {
     console.log("incorrect!");
     timer = timer -10;
     timeElement.textContent = timer;
+    wrongAnswer.classList.remove('hide');
+    rightAnswer.classList.add('hide');
    }
    questionNumber++;
    if(questionNumber === questions.length) {
@@ -112,14 +121,23 @@ function endGame() {
 }
 
 // create save function which takes final score and input value and set into local storage with submit button. Take function we create and add an event listener to submit button.
+  
 function saveScore() {
-  var newScore = {
+    var newScore = {
     newName: nameValue.value,
     userScore: timer,
-  }
-  console.log(newScore);
+    }
+    console.log(newScore);
+    window.localStorage.setItem('high score', JSON.stringify(newScore));
+    subInitials.textContent = 'Submitted';
 }
 
+function refresh() {
+  window.location.reload("Refresh")
+}
 
+localScore.onclick = JSON.parse(window.localStorage.getItem('high score'));
 
 subInitials.onclick = saveScore
+
+restart.onclick = refresh
