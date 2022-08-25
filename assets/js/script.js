@@ -7,18 +7,18 @@ var questionElement = document.getElementById('question');
 var answerButtonsElement = document.getElementById('answer-buttons');
 var endScores = document.getElementById('scorescreen');
 var score = document.getElementById('finalscore');
-var localScore = document.getElementById('highscores');
 var  nameValue = document.getElementById('nameinput');
 var subInitials = document.getElementById('submitinitials');
 var restart = document.getElementById('restart-btn');
 var rightAnswer = document.getElementById('right');
 var wrongAnswer = document.getElementById('wrong');
-
+var scoreDisplay = document.getElementById('previousscore');
 
 var timer = 50;
 var timeCount;
 var questionNumber = 0;
 
+// Timer functions to go through quiz and stop at 0
 function setupTimer() {
   timeCount = setInterval(function () {
       timer--;
@@ -26,13 +26,15 @@ function setupTimer() {
      timer = timer;
       if (timer <= 0) {         
           clearInterval(timeCount);
-            
+          endGame();  
           timeElement.textContent = timeReset;
+
            
       }
   }, 1000)
 }
 
+// Start button to be clicked and run startGame Function
 startButton.addEventListener('click', startGame);
 
 function startGame() {
@@ -40,12 +42,14 @@ function startGame() {
    startButton.classList.add('hide');
    titleHeader.classList.add('hide');
    subHeader.classList.add('hide');
+   scoreDisplay.classList.add('hide');
    questionContainerElement.classList.remove('hide');
    setupTimer();
    displayQuestion();
 
 }
 
+// Array of questions, Answers, and correct choices for Quiz
 var questions = [
    {
     question: "What does Kevin do with the onions in his chili?",
@@ -53,7 +57,7 @@ var questions = [
     answer: "Undercooks Them",
    },
    {
-    question: "What is the Villains name in Threat Level Midnight",
+    question: "What is the Villains name in Threat Level Midnight?",
     choices: ["Michael Scarn", "Packer", "Cherokee Jack", "Golden Face"],
     answer: "Golden Face",
    },
@@ -68,12 +72,13 @@ var questions = [
     answer: "Jello",
    },
    {
-    question: "Who does Michael hit with his ?",
+    question: "Who does Michael hit with his car?",
     choices: ["Kevin", "Meredith", "The security guard", "Oscar"],
     answer: "Meredith",
    },
  ]
 
+//  function to display question and button answer choices
 function displayQuestion() {
   var currentQuestion = questions[questionNumber];
   document.querySelector("h3").innerHTML = currentQuestion.question;
@@ -87,10 +92,9 @@ function displayQuestion() {
     answerButtonsElement.append(choiceButton);
   })
 
-
-
 }
 
+// function to determine what to happen when correct or wrong choice is picked and timer subtract when wrong is chosen
 function evaluateAnswer() {
    if(this.value === questions[questionNumber].answer) {
     console.log("correct!");
@@ -113,6 +117,7 @@ function evaluateAnswer() {
    }
 }
 
+// endgame function, hiding questions and displaying score based off timer
 function endGame() {
   questionContainerElement.setAttribute("class", "hide");
   endScores.removeAttribute("class");
@@ -120,8 +125,7 @@ function endGame() {
   score.textContent = timer;
 }
 
-// create save function which takes final score and input value and set into local storage with submit button. Take function we create and add an event listener to submit button.
-  
+// saves score to local storage
 function saveScore() {
     var newScore = {
     newName: nameValue.value,
@@ -132,12 +136,12 @@ function saveScore() {
     subInitials.textContent = 'Submitted';
 }
 
+// added button to refresh game
 function refresh() {
   window.location.reload("Refresh")
 }
 
-localScore.onclick = JSON.parse(window.localStorage.getItem('high score'));
-
+// submit button to save score and initials to local storage
 subInitials.onclick = saveScore
 
 restart.onclick = refresh
